@@ -1,24 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../../app/store";
 
-type MenuItem = {
-  [key: string]: {
-    name: string;
-    price: number;
-  };
+export type MenuItem = {
+  id: string;
+  name: string;
+  price: number;
+  customerId: string;
 };
 
 export type MenuState = {
-  starter: MenuItem;
-  main: MenuItem;
-  dessert: MenuItem;
+  starter: MenuItem[];
+  main: MenuItem[];
+  dessert: MenuItem[];
 };
 
 const initialState: MenuState = {
-  starter: {},
-  main: {},
-  dessert: {},
+  starter: [],
+  main: [],
+  dessert: [],
 };
 
 export const menuSlice = createSlice({
@@ -29,36 +28,31 @@ export const menuSlice = createSlice({
       state,
       action: PayloadAction<{
         id: string;
+        customerId: string;
         name: string;
         price: number;
         type: keyof MenuState;
       }>
     ) => {
-      const { id, name, price, type } = action.payload;
-      state[type][id] = {
-        name,
-        price,
-      };
+      const { id, name, price, type, customerId } = action.payload;
+      state[type].push({ id, name, price, customerId });
       return state;
     },
     removeMenuItem: (
       state,
       action: PayloadAction<{
         id: string;
+        customerId: string;
         type: keyof MenuState;
       }>
     ) => {
-      const { id, type } = action.payload;
-      delete state[type][id];
+      const { type, id } = action.payload;
+      const idx = state[type].findIndex((item) => item.id === id);
+      state[type].splice(idx, 1);
       return state;
     },
   },
 });
 
 export const { addMenuItem, removeMenuItem } = menuSlice.actions;
-
-export const starter = (state: RootState) => state.menu.starter;
-export const mains = (state: RootState) => state.menu.main;
-export const desserts = (state: RootState) => state.menu.dessert;
-
 export default menuSlice.reducer;
