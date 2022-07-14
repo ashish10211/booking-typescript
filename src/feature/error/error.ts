@@ -2,13 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { ErrorTypes } from "../../rulesEngine/rules";
 
-// type ErrorNames =
-//   | "Cannot have prawn cocktail and salmon fillet "
-//   | "Cannot have more than one same course"
-//   | "Please select atleast one main course"
-//   | "Please select atleast two course"
-//   | " Sorry no cheescake left";
-
 export type ErrorState = {
   errors: ErrorTypes[];
 };

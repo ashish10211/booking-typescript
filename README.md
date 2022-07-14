@@ -16,3 +16,4 @@ zod: for data validation
 Redux : State management
 Prettier
 eslint
+Tailwind css
