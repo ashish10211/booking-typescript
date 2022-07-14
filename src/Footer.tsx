@@ -1,9 +1,18 @@
+import { useAppSelector } from "./app/hook";
 import Person from "./Person";
+import openTableRuleValidator from "./rulesEngine";
 
 const Footer: React.FC<{ amount: string; customers: string[] }> = ({
   amount,
   customers,
 }) => {
+  const cartState = useAppSelector((state) => state.cart);
+
+  const checkRules = (e: React.SyntheticEvent) => {
+    const res = openTableRuleValidator(cartState, customers);
+    console.log("res", res);
+  };
+
   return (
     <div
       className="fixed inset-x-0 bottom-0 z-[1]
@@ -15,7 +24,10 @@ const Footer: React.FC<{ amount: string; customers: string[] }> = ({
           <span className="font-bold">Total Amount: &nbsp;</span>
           <span className="font-medium">{amount} AUD</span>
         </p>
-        <button className="h-[45px] w-[200px] rounded bg-green-400 hover:border font-medium hover:border-black">
+        <button
+          className="h-[45px] w-[200px] rounded bg-green-400 hover:border font-medium hover:border-black"
+          onClick={checkRules}
+        >
           Make A Booking
         </button>
       </div>

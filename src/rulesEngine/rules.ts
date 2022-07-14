@@ -1,15 +1,15 @@
-import { MenuState } from "../feature/cart/menuSlice";
+import type { MenuState } from "../feature/cart/menuSlice";
 import { CHEESECAKE, PRAWN_COCKTAILS, SALMON_FILLET } from "./constants";
 
-type ErrorTypes =
+export type ErrorTypes =
   | "OneMainCourseError"
   | "AtleastTwoCoursesError"
   | "NoCheesecakeError"
   | "CannotOrderPrawnSalmonTogetherError";
 
-type RuleReturn = { success: boolean; error?: ErrorTypes };
+type RuleReturnType = { success: true } | { success: false; error: ErrorTypes };
 
-type Rule = (state: MenuState, customers: string[]) => RuleReturn;
+export type Rule = (state: MenuState, customers: string[]) => RuleReturnType;
 
 export const oneMainCourseRule: Rule = (
   menuState: MenuState,
