@@ -9,13 +9,13 @@ import { MenuState } from "../feature/cart/menuSlice";
 const courseState: MenuState = {
   main: [
     {
-      id: "1",
+      id: 1,
       name: "Main-1",
       price: 12,
       customerId: "1",
     },
     {
-      id: "1",
+      id: 1,
       name: "Main-1",
       price: 12,
       customerId: "2",
@@ -23,13 +23,13 @@ const courseState: MenuState = {
   ],
   starter: [
     {
-      id: "7",
+      id: 7,
       name: "Prawn",
       price: 12,
       customerId: "1",
     },
     {
-      id: "4",
+      id: 4,
       name: "salmon",
       price: 12,
       customerId: "1",
@@ -37,19 +37,19 @@ const courseState: MenuState = {
   ],
   dessert: [
     {
-      id: "11",
+      id: 11,
       name: "cheesecake",
       price: 12,
       customerId: "1",
     },
     {
-      id: "6",
+      id: 6,
       name: "dessert-2",
       price: 12,
       customerId: "2",
     },
     {
-      id: "11",
+      id: 11,
       name: "cheesecake",
       price: 12,
       customerId: "2",
@@ -70,7 +70,7 @@ describe("oneMainCourseRule()", () => {
   const courseStateAppended: MenuState = {
     main: [
       {
-        id: "1",
+        id: 1,
         name: "Main-1",
         price: 12,
         customerId: "1",
@@ -78,13 +78,13 @@ describe("oneMainCourseRule()", () => {
     ],
     starter: [
       {
-        id: "7",
+        id: 7,
         name: "Prawn",
         price: 12,
         customerId: "1",
       },
       {
-        id: "4",
+        id: 4,
         name: "starters-2",
         price: 12,
         customerId: "2",
@@ -105,7 +105,7 @@ describe("atLeastTwoCoursesRule", () => {
   });
   const tempState = {
     ...courseState,
-    main: [{ id: "1", name: "steak", price: 15, customerId: "1" }],
+    main: [{ id: 1, name: "steak", price: 15, customerId: "1" }],
     starter: [],
     dessert: [],
   };
@@ -116,8 +116,8 @@ describe("atLeastTwoCoursesRule", () => {
   const tempState2 = {
     ...courseState,
     main: [
-      { id: "1", name: "steak", price: 15, customerId: "1" },
-      { id: "1", name: "steak", price: 15, customerId: "2" },
+      { id: 1, name: "steak", price: 15, customerId: "1" },
+      { id: 1, name: "steak", price: 15, customerId: "2" },
     ],
     starter: [],
     dessert: [],

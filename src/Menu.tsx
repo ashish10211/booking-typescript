@@ -2,7 +2,7 @@ import { useAppSelector } from "./app/hook";
 import React, { useMemo } from "react";
 import FoodCourse from "./FoodCourse";
 
-export type Food = { id: string; name: string; price: number };
+export type Food = { id: number; name: string; price: number };
 
 export const Starter: React.FC<{ foods: Food[]; customerId: string }> = ({
   foods,
@@ -12,6 +12,7 @@ export const Starter: React.FC<{ foods: Food[]; customerId: string }> = ({
   const selectedFoods = useMemo(() => {
     return starters.filter((starter) => starter.customerId === customerId);
   }, [starters, customerId]);
+
   return (
     <FoodCourse
       selectedFoods={selectedFoods}

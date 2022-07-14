@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export type MenuItem = {
-  id: string;
+  id: number;
   name: string;
   price: number;
   customerId: string;
@@ -27,7 +27,7 @@ export const menuSlice = createSlice({
     addMenuItem: (
       state,
       action: PayloadAction<{
-        id: string;
+        id: number;
         customerId: string;
         name: string;
         price: number;
@@ -41,7 +41,7 @@ export const menuSlice = createSlice({
     removeMenuItem: (
       state,
       action: PayloadAction<{
-        id: string;
+        id: number;
         customerId: string;
         type: keyof MenuState;
       }>

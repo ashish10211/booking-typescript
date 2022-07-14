@@ -8,6 +8,10 @@ import { Food } from "./Menu";
 import { useAppDispatch } from "./app/hook";
 import React from "react";
 
+const isSelectedFood = (selectedFoods: MenuItem[], foodId: number) => {
+  return selectedFoods.some((selectedFood) => selectedFood.id === foodId);
+};
+
 const FoodCourse: React.FC<{
   selectedFoods: MenuItem[];
   type: keyof MenuState;
@@ -23,12 +27,9 @@ const FoodCourse: React.FC<{
         {foods.map((food) => {
           return (
             <button
+              key={food.id.toString()}
               onClick={() => {
-                if (
-                  selectedFoods.some(
-                    (selectedFood) => selectedFood.id === food.id
-                  )
-                ) {
+                if (isSelectedFood(selectedFoods, food.id)) {
                   dispatch(removeMenuItem({ id: food.id, type, customerId }));
                   return;
                 }
@@ -42,12 +43,11 @@ const FoodCourse: React.FC<{
                   })
                 );
               }}
-              id={food.id}
-              className={`w-48 h-48  mx-5 my-5 border-black border-2 hover:bg-sky-200 bg-red-500
+              className={`w-64 h-64  mx-5 my-5 border-black border-2 hover:bg-sky-200
                    ${
-                     selectedFoods.some(
-                       (selectedFood) => selectedFood.id === food.id
-                     ) && " bg-green-500 "
+                     isSelectedFood(selectedFoods, food.id)
+                       ? "bg-green-500"
+                       : "bg-red-500"
                    }
                   `}
             >

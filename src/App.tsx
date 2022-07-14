@@ -4,12 +4,23 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { useAppSelector } from "./app/hook";
 import Food from "./Food";
+import useMenuData from "./hook/useMenuData";
 
 function App() {
   const [customers, setCustomers] = useState(["1"]);
   const [selectedCustomer, setSelectedCustomer] = useState("1");
-
+  const { data, err, isLoading } = useMenuData(
+    "http://localhost:3000/api/menu"
+  );
   const cartState = useAppSelector((state) => state.cart);
+
+  if (err) {
+    return <div>Something went wrong please try again.</div>;
+  }
+
+  if (!data || isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="App mb-32">
@@ -58,8 +69,7 @@ function App() {
             key={customer}
             className={customer === selectedCustomer ? "block" : "hidden"}
           >
-            Selected customer {customer}
-            <Food customerId={customer} />
+            <Food customerId={customer} data={data} />
           </div>
         );
       })}
