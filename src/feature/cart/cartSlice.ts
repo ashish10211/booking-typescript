@@ -20,8 +20,8 @@ const initialState: MenuState = {
   dessert: [],
 };
 
-export const menuSlice = createSlice({
-  name: "menu",
+export const cartSlice = createSlice({
+  name: "cart",
   initialState,
   reducers: {
     addMenuItem: (
@@ -54,5 +54,5 @@ export const menuSlice = createSlice({
   },
 });
 
-export const { addMenuItem, removeMenuItem } = menuSlice.actions;
-export default menuSlice.reducer;
+export const { addMenuItem, removeMenuItem } = cartSlice.actions;
+export default cartSlice.reducer;
