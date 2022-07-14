@@ -1,123 +1,12 @@
-import React, { useMemo, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useAppDispatch, useAppSelector } from "./app/hook";
-import {
-  addMenuItem,
-  MenuState,
-  MenuItem,
-  removeMenuItem,
-} from "./feature/cart/menuSlice";
+
 import { setBookingCount } from "./feature/option/optionSlice";
 
-type Food = { id: string; name: string; price: number };
-
-const Starter: React.FC<{ foods: Food[]; customerId: string }> = ({
-  foods,
-  customerId,
-}) => {
-  const starters = useAppSelector((state) => state.cart.starter);
-  const selectedFoods = useMemo(() => {
-    return starters.filter((starter) => starter.customerId === customerId);
-  }, [starters, customerId]);
-  return (
-    <FoodCourse
-      selectedFoods={selectedFoods}
-      foods={foods}
-      type="starter"
-      customerId={customerId}
-    />
-  );
-};
-const Main: React.FC<{ foods: Food[]; customerId: string }> = ({
-  foods,
-  customerId,
-}) => {
-  const mains = useAppSelector((state) => state.cart.main);
-  const selectedFoods = useMemo(() => {
-    return mains.filter((main) => main.customerId === customerId);
-  }, [mains, customerId]);
-  return (
-    <FoodCourse
-      selectedFoods={selectedFoods}
-      foods={foods}
-      type="main"
-      customerId={customerId}
-    />
-  );
-};
-
-const Dessert: React.FC<{ foods: Food[]; customerId: string }> = ({
-  foods,
-  customerId,
-}) => {
-  const desserts = useAppSelector((state) => state.cart.dessert);
-  const selectedFoods = useMemo(() => {
-    return desserts.filter((dessert) => dessert.customerId === customerId);
-  }, [desserts, customerId]);
-  return (
-    <FoodCourse
-      selectedFoods={selectedFoods}
-      foods={foods}
-      type="dessert"
-      customerId={customerId}
-    />
-  );
-};
-
-const FoodCourse: React.FC<{
-  selectedFoods: MenuItem[];
-  type: keyof MenuState;
-  foods: Food[];
-  customerId: string;
-}> = ({ type, foods, selectedFoods, customerId }) => {
-  const dispatch = useAppDispatch();
-
-  return (
-    <div className="font-bold text-3xl">
-      {type[0].toUpperCase() + type.slice(1)}
-      <div className="flex flex-wrap text-xl mt-2 ">
-        {foods.map((food) => {
-          return (
-            <button
-              onClick={() => {
-                if (
-                  selectedFoods.some(
-                    (selectedFood) => selectedFood.id === food.id
-                  )
-                ) {
-                  dispatch(removeMenuItem({ id: food.id, type, customerId }));
-                  return;
-                }
-                dispatch(
-                  addMenuItem({
-                    id: food.id,
-                    name: food.name,
-                    price: food.price,
-                    customerId,
-                    type,
-                  })
-                );
-              }}
-              id={food.id}
-              className={`w-48 h-48  mx-5 my-5 border-black border-2 hover:bg-sky-200 bg-red-500
-                 ${
-                   selectedFoods.some(
-                     (selectedFood) => selectedFood.id === food.id
-                   ) && " bg-green-500 "
-                 }
-                `}
-            >
-              <p>{food.name}</p>
-              <p>{food.price}</p>
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
+import { Starter, Main, Dessert } from "./Menu";
 
 function App() {
   const [selectedPerson, setSelectedPerson] = useState("0");
