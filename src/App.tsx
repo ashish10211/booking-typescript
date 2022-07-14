@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="App mb-32">
       <Header />
-      <span className="font-bold text-xl">
+      <span className="text-xl font-bold">
         Select how many people you are ordering for :&nbsp;
       </span>
       <select

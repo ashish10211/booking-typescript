@@ -6,7 +6,7 @@ const Food: React.FC<{ customerId: string; data: MenuSchema }> = ({
   data,
 }) => {
   return (
-    <div className="flex justify-center mt-5">
+    <div className="mt-5 flex justify-center">
       <main style={{ width: 1200 }}>
         <Starter customerId={customerId} foods={data.starters} />
         <Main customerId={customerId} foods={data.mains} />

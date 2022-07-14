@@ -3,7 +3,7 @@ const Person: React.FC<{ customers: string }> = ({ customers }) => {
     <div>
       <div
         className="
- mx-2 h-[45px] w-[200px] font-bold text-m flex items-center justify-center"
+ text-m mx-2 flex h-[45px] w-[200px] items-center justify-center font-bold"
       >
         Ordering for {customers} Person
       </div>

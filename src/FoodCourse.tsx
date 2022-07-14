@@ -21,9 +21,9 @@ const FoodCourse: React.FC<{
   const dispatch = useAppDispatch();
 
   return (
-    <div className="font-bold text-3xl">
+    <div className="text-3xl font-bold">
       {type[0].toUpperCase() + type.slice(1)}
-      <div className="flex flex-wrap text-xl mt-2 ">
+      <div className="mt-2 flex flex-wrap text-xl ">
         {foods.map((food) => {
           return (
             <button
@@ -43,7 +43,7 @@ const FoodCourse: React.FC<{
                   })
                 );
               }}
-              className={`w-64 h-64  mx-5 my-5 border-black border-2 hover:bg-sky-200
+              className={`mx-5 my-5  h-64 w-64 border-2 border-black hover:bg-sky-200
                    ${
                      isSelectedFood(selectedFoods, food.id)
                        ? "bg-green-500"
