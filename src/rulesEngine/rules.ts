@@ -1,4 +1,4 @@
-import type { MenuState } from "../feature/cart/menuSlice";
+import type { MenuState } from "../feature/cart/cartSlice";
 import { CHEESECAKE, PRAWN_COCKTAILS, SALMON_FILLET } from "./constants";
 
 export type ErrorTypes =
