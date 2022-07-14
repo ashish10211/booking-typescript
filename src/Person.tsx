@@ -1,15 +1,12 @@
-import { useAppSelector } from "./app/hook";
-
-const Person: React.FC = () => {
-  const displayButton = useAppSelector((state) => state.count);
+const Person: React.FC<{ customers: string }> = ({ customers }) => {
   return (
     <div>
-      <button
-        className="bg-green-400
- mx-2  font-medium h-[45px] w-[200px] rounded"
+      <div
+        className="
+ mx-2 h-[45px] w-[200px] font-bold text-m flex items-center justify-center"
       >
-        {displayButton.count} Person
-      </button>
+        Ordering for {customers} Person
+      </div>
     </div>
   );
 };
