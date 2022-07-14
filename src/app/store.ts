@@ -1,10 +1,11 @@
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import cartReducer from "../feature/cart/menuSlice";
-
+import cartReducer from "../feature/cart/cartSlice";
+import optionReducer from "../feature/error/error";
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
+    error: optionReducer,
   },
 });
 

@@ -38,7 +38,6 @@ const useMenuData = (url: string) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log("Error ", err);
         setIsLoading(false);
         setError({ message: "something went wrong with API" });
       });

@@ -3,7 +3,7 @@ import {
   MenuState,
   MenuItem,
   removeMenuItem,
-} from "./feature/cart/menuSlice";
+} from "./feature/cart/cartSlice";
 import { Food } from "./Menu";
 import { useAppDispatch } from "./app/hook";
 import React from "react";
@@ -51,8 +51,8 @@ const FoodCourse: React.FC<{
                    }
                   `}
             >
-              <p>{food.name}</p>
-              <p>{food.price}</p>
+              <p>Name : {food.name}</p>
+              <p>Price : {food.price}</p>
             </button>
           );
         })}

@@ -1,4 +1,4 @@
-import { MenuState } from "../feature/cart/menuSlice";
+import { MenuState } from "../feature/cart/cartSlice";
 import {
   Rule,
   ErrorTypes,

@@ -4,7 +4,7 @@ import {
   oneMainCourseRule,
   prawnSalmonRule,
 } from "./rules";
-import { MenuState } from "../feature/cart/menuSlice";
+import { MenuState } from "../feature/cart/cartSlice";
 
 const courseState: MenuState = {
   main: [

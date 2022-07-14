@@ -48,8 +48,8 @@ function App() {
         {customers.map((customerId) => {
           return (
             <button
-              className={`w-5 ${
-                customerId === selectedCustomer ? "bg-green-500" : "bg-red-500"
+              className={`h-[45px] w-[200px] rounded bg-green-400 font-medium hover:border hover:border-black ${
+                customerId === selectedCustomer ? "bg-green-500" : "bg-gray-500"
               } `}
               key={customerId}
               onClick={() => {
